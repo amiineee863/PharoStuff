@@ -12,12 +12,6 @@ MyKnight >> id [
 ]
 
 { #category : 'rendering' }
-MyKnight >> renderPieceOn: aSquare [
-
-	^ aSquare renderKnight: self
-]
-
-{ #category : 'rendering' }
 MyKnight >> targetSquaresLegal: aBoolean [
 
 	^ {
@@ -31,4 +25,10 @@ MyKnight >> targetSquaresLegal: aBoolean [
 		  (square down ifNotNil: [ :p | p down ifNotNil: #right ]) }
 		  select: [ :s |
 			  s notNil and: [ s hasPiece not or: [ s contents color ~= color ] ] ]
+]
+
+{ #category : 'rendering' }
+MyKnight class >> glyphTable [
+
+	^ #( #( 'N' 'n' ) #( 'M' 'm' ) )
 ]

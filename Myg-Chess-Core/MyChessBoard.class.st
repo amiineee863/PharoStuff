@@ -8,7 +8,8 @@ Class {
 		'state',
 		'whiteColor',
 		'blackColor',
-		'game'
+		'game',
+		'enPassantTargetSquare'
 	],
 	#category : 'Myg-Chess-Core',
 	#package : 'Myg-Chess-Core'
@@ -258,4 +259,17 @@ MyChessBoard >> whiteColor [
 MyChessBoard >> whiteColor: anObject [
 
 	whiteColor := anObject
+]
+
+{ #category : 'accessing' }
+MyChessBoard >> enPassantTargetSquare [
+
+	"The square just skipped by a pawn that advanced two squares on the previous move, or nil"
+	^ enPassantTargetSquare
+]
+
+{ #category : 'accessing' }
+MyChessBoard >> enPassantTargetSquare: aSquareOrNil [
+
+	enPassantTargetSquare := aSquareOrNil
 ]

@@ -11,12 +11,6 @@ MyRook >> id [
 ]
 
 { #category : 'rendering' }
-MyRook >> renderPieceOn: aSquare [
-
-	^ aSquare renderRook: self
-]
-
-{ #category : 'rendering' }
 MyRook >> targetSquares [
 
 	^ self upFile , self downFile , self leftFile , self rightFile
@@ -27,4 +21,10 @@ MyRook >> targetSquaresLegal: aBoolean [
 
 	^ (self upFileLegal: aBoolean) , (self downFileLegal: aBoolean)
 	  , (self leftFileLegal: aBoolean) , (self rightFileLegal: aBoolean)
+]
+
+{ #category : 'rendering' }
+MyRook class >> glyphTable [
+
+	^ #( #( 'R' 'r' ) #( 'T' 't' ) )
 ]

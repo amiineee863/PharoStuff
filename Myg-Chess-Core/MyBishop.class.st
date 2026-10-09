@@ -12,16 +12,16 @@ MyBishop >> id [
 ]
 
 { #category : 'rendering' }
-MyBishop >> renderPieceOn: aSquare [
-
-	^ aSquare renderBishop: self
-]
-
-{ #category : 'rendering' }
 MyBishop >> targetSquaresLegal: aBoolean [
 
 	^ (self upRightDiagonalLegal: aBoolean)
 	  , (self upLeftDiagonalLegal: aBoolean)
 	  , (self downRightDiagonalLegal: aBoolean)
 	  , (self downLeftDiagonalLegal: aBoolean)
+]
+
+{ #category : 'rendering' }
+MyBishop class >> glyphTable [
+
+	^ #( #( 'B' 'b' ) #( 'V' 'v' ) )
 ]

@@ -167,16 +167,6 @@ MyPiece >> legalTargetSquares [
 	^ self targetSquaresLegal: true
 ]
 
-{ #category : 'path commands' }
-MyPiece >> moveTo: aSquare [
-
-	(self legalTargetSquares includes: aSquare) ifFalse: [ ^ self ].
-
-	square emptyContents.
-	square := aSquare.
-	aSquare contents: self
-]
-
 { #category : 'rendering' }
 MyPiece >> rightFile [
 
@@ -248,4 +238,40 @@ MyPiece >> upRightDiagonalLegal: aBoolean [
 	^ self
 		  collectSquares: [ :aSquare | aSquare up ifNotNil: #right ]
 		  legal: aBoolean
+]
+
+{ #category : 'path commands' }
+MyPiece >> moveTo: aSquare [
+
+	(self legalTargetSquares includes: aSquare) ifFalse: [ ^ self ].
+
+	"Any move ends the en passant opportunity created by the previous move"
+	self board enPassantTargetSquare: nil.
+
+	square emptyContents.
+	square := aSquare.
+	aSquare contents: self
+]
+
+{ #category : 'rendering' }
+MyPiece class >> glyphTable [
+
+	"A 2x2 table of glyphs: row 1 is for white pieces, row 2 for black pieces.
+	Column 1 is for light squares, column 2 for dark squares."
+	^ self subclassResponsibility
+]
+
+{ #category : 'rendering' }
+MyPiece >> glyphOnSquareColor: squareIsBlack [
+
+	| row col |
+	row := self isWhite ifTrue: [ 1 ] ifFalse: [ 2 ].
+	col := squareIsBlack ifTrue: [ 2 ] ifFalse: [ 1 ].
+	^ (self class glyphTable at: row) at: col
+]
+
+{ #category : 'rendering' }
+MyPiece >> renderPieceOn: aSquare [
+
+	^ self glyphOnSquareColor: aSquare color isBlack
 ]

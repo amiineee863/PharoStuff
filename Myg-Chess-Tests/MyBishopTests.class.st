@@ -38,10 +38,10 @@ MyBishopTests >> testMovesWithOponentObstacle [
 	"Let's put a black obstacle on g6, blocking the f5-h7 diagonal"
 	board at: 'g6' put: MyBishop black.
 
-	squares := bishop targetSquares.
+	squares := bishop legalTargetSquares.
 	self
 		assertCollection: squares
-		includesAll:
+		hasSameElements:
 			(#( f5 g6 f3 g2 h1 d5 c6 b7 a8 d3 c2 b1 ) collect: [ :name |
 				 board at: name ])
 ]
@@ -58,10 +58,10 @@ MyBishopTests >> testMovesWithSameColorObstacle [
 	"Let's put a white obstacle on g6, blocking the f5-h7 diagonal"
 	board at: 'g6' put: MyBishop white.
 
-	squares := bishop targetSquares.
+	squares := bishop legalTargetSquares.
 	self
 		assertCollection: squares
-		includesAll:
+		hasSameElements:
 			(#( f5 f3 g2 h1 d5 c6 b7 a8 d3 c2 b1 ) collect: [ :name |
 				 board at: name ])
 ]

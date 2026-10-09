@@ -30,3 +30,35 @@ MyKingTest >> testIsNotCheckBySameColorRook [
 
 	self deny: king isInCheck
 ]
+
+{ #category : 'tests' }
+MyKingTest >> testKingCanCaptureUndefendedPiece [
+
+	| king board |
+	board := MyChessBoard empty.
+	board at: 'e4' put: (king := MyKing white).
+	board at: 'd4' put: MyKnight black.
+	self assert: (king legalTargetSquares includes: (board at: 'd4'))
+]
+
+{ #category : 'tests' }
+MyKingTest >> testKingCannotMoveOntoSquareAttackedByPawn [
+
+	| king board |
+	board := MyChessBoard empty.
+	board at: 'd3' put: (king := MyKing white).
+	"A black pawn on e5 attacks d4 and f4"
+	board at: 'e5' put: MyPawn black.
+	self deny: (king legalTargetSquares includes: (board at: 'd4')).
+	self assert: (king legalTargetSquares includes: (board at: 'e4'))
+]
+
+{ #category : 'tests' }
+MyKingTest >> testIsInCheckByPawn [
+
+	| king board |
+	board := MyChessBoard empty.
+	board at: 'e4' put: (king := MyKing white).
+	board at: 'd5' put: MyPawn black.
+	self assert: king isInCheck
+]

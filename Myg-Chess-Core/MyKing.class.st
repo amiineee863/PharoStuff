@@ -62,33 +62,29 @@ MyKing >> isKing [
 	^ true
 ]
 
+{ #category : 'rendering' }
+MyKing class >> glyphTable [
+
+	^ #( #( 'K' 'k' ) #( 'L' 'l' ) )
+]
+
 { #category : 'accessing' }
 MyKing >> opponentPieces [
 
 	^ self board pieces select: [ :e |
-		  e notNil and: [ e color = color negated ] ]
-]
-
-{ #category : 'rendering' }
-MyKing >> renderPieceOn: aSquare [
-
-	^ aSquare renderKing: self
+		  e isEmpty not and: [ e color = color negated ] ]
 ]
 
 { #category : 'rendering' }
 MyKing >> targetSquaresLegal: aBoolean [
-	"The king cannot move to threatened squares"
 
+	"The king cannot move to threatened squares, but it can capture an opponent piece"
 	| threatenedSquares |
 	threatenedSquares := self opponentPieces flatCollect: [ :e |
-		                     e attackingSquares ].
+							 e attackingSquares ].
 
 	^ self basicTargetSquares select: [ :s |
 		  s notNil and: [
 			  (threatenedSquares includes: s) not and: [
-				  s hasPiece not or: [ 
-					"The square has an opponent piece"
-					s contents color ~= color and: [ 
-						"Let's hope the piece is not defended"
-						threatenedSquares includes: s  ] ] ] ] ]
+				  s hasPiece not or: [ s contents color ~= color ] ] ] ]
 ]
