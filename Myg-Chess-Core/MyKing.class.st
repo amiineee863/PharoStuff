@@ -5,6 +5,12 @@ Class {
 	#package : 'Myg-Chess-Core'
 }
 
+{ #category : 'rendering' }
+MyKing class >> glyphTable [
+
+	^ #( #( 'K' 'k' ) #( 'L' 'l' ) )
+]
+
 { #category : 'as yet unclassified' }
 MyKing >> attackingSquares [
 
@@ -60,12 +66,6 @@ MyKing >> isInCheck [
 MyKing >> isKing [
 	
 	^ true
-]
-
-{ #category : 'rendering' }
-MyKing class >> glyphTable [
-
-	^ #( #( 'K' 'k' ) #( 'L' 'l' ) )
 ]
 
 { #category : 'accessing' }

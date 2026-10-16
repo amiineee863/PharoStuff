@@ -1,12 +1,12 @@
 Class {
-	#name : 'MyNullPieceTests',
+	#name : 'MyNullPieceTest',
 	#superclass : 'TestCase',
 	#category : 'Myg-Chess-Tests',
 	#package : 'Myg-Chess-Tests'
 }
 
 { #category : 'tests' }
-MyNullPieceTests >> testEmptySquareHasNullPiece [
+MyNullPieceTest >> testEmptySquareHasNullPiece [
 	| board square |
 	board := MyChessBoard empty.
 	square := board at: 'e4'.
@@ -15,7 +15,7 @@ MyNullPieceTests >> testEmptySquareHasNullPiece [
 ]
 
 { #category : 'tests' }
-MyNullPieceTests >> testOccupiedSquareIsNotEmpty [
+MyNullPieceTest >> testOccupiedSquareIsNotEmpty [
 	| board square |
 	board := MyChessBoard empty.
 	board at: 'e2' put: MyPawn white.

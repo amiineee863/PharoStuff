@@ -6,6 +6,12 @@ Class {
 }
 
 { #category : 'rendering' }
+MyQueen class >> glyphTable [
+
+	^ #( #( 'Q' 'q' ) #( 'W' 'w' ) )
+]
+
+{ #category : 'rendering' }
 MyQueen >> targetSquaresLegal: aBoolean [
 
 	| likeABishop likeARook |
@@ -18,10 +24,4 @@ MyQueen >> targetSquaresLegal: aBoolean [
 	             , (self leftFileLegal: aBoolean)
 	             , (self rightFileLegal: aBoolean).
 	^ likeABishop , likeARook
-]
-
-{ #category : 'rendering' }
-MyQueen class >> glyphTable [
-
-	^ #( #( 'Q' 'q' ) #( 'W' 'w' ) )
 ]

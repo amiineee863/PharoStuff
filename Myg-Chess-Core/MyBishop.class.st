@@ -5,6 +5,12 @@ Class {
 	#package : 'Myg-Chess-Core'
 }
 
+{ #category : 'rendering' }
+MyBishop class >> glyphTable [
+
+	^ #( #( 'B' 'b' ) #( 'V' 'v' ) )
+]
+
 { #category : 'accessing' }
 MyBishop >> id [
 	
@@ -18,10 +24,4 @@ MyBishop >> targetSquaresLegal: aBoolean [
 	  , (self upLeftDiagonalLegal: aBoolean)
 	  , (self downRightDiagonalLegal: aBoolean)
 	  , (self downLeftDiagonalLegal: aBoolean)
-]
-
-{ #category : 'rendering' }
-MyBishop class >> glyphTable [
-
-	^ #( #( 'B' 'b' ) #( 'V' 'v' ) )
 ]

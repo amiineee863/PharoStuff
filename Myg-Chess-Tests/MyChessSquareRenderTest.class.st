@@ -1,12 +1,12 @@
 Class {
-	#name : 'MyChessSquareRenderTests',
+	#name : 'MyChessSquareRenderTest',
 	#superclass : 'TestCase',
 	#category : 'Myg-Chess-Tests',
 	#package : 'Myg-Chess-Tests'
 }
 
 { #category : 'tests' }
-MyChessSquareRenderTests >> expectedGlyphs [
+MyChessSquareRenderTest >> expectedGlyphs [
 
 	"piece class -> { white on light square. white on dark square. black on light square. black on dark square }"
 	^ {
@@ -19,7 +19,7 @@ MyChessSquareRenderTests >> expectedGlyphs [
 ]
 
 { #category : 'tests' }
-MyChessSquareRenderTests >> testAllGlyphs [
+MyChessSquareRenderTest >> testAllGlyphs [
 
 	| lightSquare darkSquare |
 	lightSquare := MyChessSquare white.
